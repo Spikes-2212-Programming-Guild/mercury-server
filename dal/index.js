@@ -9,7 +9,9 @@ function getTeam (number) {
     teamsCollection.findOne({number: number})
       .then(team => {
         if (!team) {
-          reject(Error(`Team ${number} dosen't exist`))
+          const err = Error(`Team ${number} dosen't exist`)
+          err.name = 'no-team-found'
+          reject(err)
         } else {
           resolve(team)
         }
