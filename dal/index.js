@@ -39,6 +39,7 @@ function insertMatch (match, teamNumber) {
         const newMatch = match
         delete newMatch.number
         team.matches[match.number] = newMatch
+        updateTeam(team)
         resolve()
       })
       .catch(err => reject(err))
