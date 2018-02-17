@@ -24,8 +24,8 @@ function insertTeam (team) {
   teamsCollection.insertOne(team)
 }
 
-function updateTeam (newTeam) {
-  teamsCollection.updateOne({number: newTeam.number}, newTeam)
+function updateTeam (team, number) {
+  teamsCollection.updateOne({number: number}, team)
 }
 
 function removeTeam (number) {
@@ -39,7 +39,7 @@ function insertMatch (match, teamNumber) {
         const newMatch = match
         delete newMatch.number
         team.matches[match.number] = newMatch
-        updateTeam(team)
+        updateTeam(team, team.number)
         resolve()
       })
       .catch(err => reject(err))
