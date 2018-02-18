@@ -1,7 +1,8 @@
 {
   "port": "8088",
+  "gameName": "game.json",
   "mongo": {
-    "url" : "mongo://localhost:27017",
+    "url" : "mongodb://localhost:27017",
     "dbName": "mercury",
     "collectionName": "teams"
   }
