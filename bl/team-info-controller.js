@@ -10,7 +10,7 @@ function getTeamInfo (number) {
         else {
           dbController.getTeam(number)
             .then(team => {
-              resolve(teamInfoProcessor(team.matches, gameConfigManager.get()))
+              resolve(teamInfoProcessor(team.matches, gameConfigManager.get(), {matchNumber: true}))
             })
             .catch(err => reject(err))
         }

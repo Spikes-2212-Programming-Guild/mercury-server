@@ -16,11 +16,16 @@ function extractQuestionData (question, matches, gameStage) {
   })
   return answers
 }
-module.exports = function (matches, gameConfig) {
+module.exports = function (matches, gameConfig, params) {
   const data = prepareMatches(matches)
 
   const teamInfo = {}
-  teamInfo['matchnumber'] = Object.keys(matches)
+  if (params.matchNumber) {
+    teamInfo['matchnumber'] = Object.keys(matches)
+  }
+  if (params.teamNumber) {
+    teamInfo['teamNumber'] = params.teamNumber
+  }
   Object.keys(gameConfig).forEach(configKey => {
     gameConfig[configKey].forEach(question => {
       teamInfo[question.name] = {
