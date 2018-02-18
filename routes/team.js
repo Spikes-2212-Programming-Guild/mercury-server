@@ -1,8 +1,8 @@
 const router = require('express').Router()
-const teamController = require('../bl/team-info-controller')
+const insertMatchController = require('../bl/insert-match-controller')
 
 router.post('/submit-match', function (req, res) {
-  teamController.insertMatch(req.body.match)
+  insertMatchController.insertMatch(req.body.match)
     .then(() => {
       res.end()
     })
