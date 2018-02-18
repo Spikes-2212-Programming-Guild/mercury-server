@@ -8,9 +8,16 @@ function insertMatch (match) {
         if (!exists) {
           dbController.insertTeam({number: teamNumber, matches: {}})
         }
-        dbController.insertMatch(match, teamNumber)
-          .then(() => resolve())
-          .catch(err => reject(err))
+        dbController.matchExists(match.matchnumber, teamNumber)
+          .then(matchExists => {
+            if (!matchExists) {
+              dbController.insertMatch(match, teamNumber)
+                .then(() => resolve())
+                .catch(err => reject(err))
+            } else {
+              reject(Error('Match Was Already Saved'))
+            }
+          })
       })
   })
 }
