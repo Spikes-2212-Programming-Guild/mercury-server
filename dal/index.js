@@ -58,6 +58,14 @@ function matchExists (matchNumber, teamNumber) {
   })
 }
 
+function teamExists (number) {
+  return new Promise((resolve, reject) => {
+    getTeam(number)
+      .then(() => resolve(true))
+      .catch(() => resolve(false))
+  })
+}
+
 MongoClient.connect(config.url)
   .then(client => {
     client.db(config.dbName).collection(config.collectionName, function (err, coll) {
@@ -76,5 +84,6 @@ module.exports = {
   insertTeam,
   updateTeam,
   getTeam,
-  removeTeam
+  removeTeam,
+  teamExists
 }
