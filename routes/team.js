@@ -7,6 +7,7 @@ router.post('/submit-match', function (req, res) {
       res.end()
     })
     .catch(err => {
+      res.status(406).send('match-already-saved')
       console.error(err)
       res.end()
     })
