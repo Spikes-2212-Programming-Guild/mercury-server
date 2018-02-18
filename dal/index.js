@@ -24,8 +24,9 @@ function insertTeam (team) {
   teamsCollection.insertOne(team)
 }
 
-function updateTeam (team, number) {
-  teamsCollection.updateOne({number: number}, team)
+function updateTeam (number, updateQuery) {
+  teamsCollection.updateOne({number: number}, updateQuery)
+    .catch(err => console.error(err))
 }
 
 function removeTeam (number) {
@@ -34,15 +35,12 @@ function removeTeam (number) {
 
 function insertMatch (match, teamNumber) {
   return new Promise((resolve, reject) => {
-    getTeam(teamNumber)
-      .then(team => {
-        const newMatch = match
-        delete newMatch.number
-        team.matches[match.number] = newMatch
-        updateTeam(team, team.number)
-        resolve()
-      })
-      .catch(err => reject(err))
+    const newMatch = Object.assign({}, match)
+    delete newMatch.matchnumber
+    const expression = {}
+    expression[`matches.${match.matchnumber}`] = newMatch
+    updateTeam(teamNumber, {$set: expression})
+    resolve()
   })
 }
 
