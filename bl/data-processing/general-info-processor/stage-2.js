@@ -9,9 +9,9 @@ module.exports = function (info) {
     }
   })
   teamNumbers.forEach(teamNumber => {
-    Object.keys(info[teamNumber]).forEach(questiontName => {
-      result[questiontName].data.push(info[teamNumber][questiontName])
-      result[questiontName].labels.push(teamNumber)
+    Object.keys(info[teamNumber]).forEach(questionName => {
+      result[questionName].data.push(info[teamNumber][questionName])
+      result[questionName].labels.push(teamNumber)
     })
   })
   return result
