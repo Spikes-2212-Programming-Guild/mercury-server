@@ -64,6 +64,17 @@ function teamExists (number) {
   })
 }
 
+function getAllTeams () {
+  return new Promise((resolve, reject) => {
+    teamsCollection.find({}).project({_id: 0}).toArray(function (err, arr) {
+      if (err) reject(err)
+      else {
+        resolve(arr)
+      }
+    })
+  })
+}
+
 MongoClient.connect(config.url)
   .then(client => {
     client.db(config.dbName).collection(config.collectionName, function (err, coll) {
@@ -83,5 +94,6 @@ module.exports = {
   updateTeam,
   getTeam,
   removeTeam,
-  teamExists
+  teamExists,
+  getAllTeams
 }
