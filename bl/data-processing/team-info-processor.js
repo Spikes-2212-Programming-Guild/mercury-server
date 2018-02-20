@@ -21,10 +21,7 @@ module.exports = function (matches, gameConfig, params) {
 
   const teamInfo = {}
   if (params.matchNumber) {
-    teamInfo['matchnumber'] = Object.keys(matches)
-  }
-  if (params.teamNumber) {
-    teamInfo['teamNumber'] = params.teamNumber
+    teamInfo['matchnumber'] = {data: Object.keys(matches), type: 'number'}
   }
   Object.keys(gameConfig).forEach(configKey => {
     gameConfig[configKey].forEach(question => {
@@ -37,6 +34,10 @@ module.exports = function (matches, gameConfig, params) {
       }
     })
   })
+
+  if (params.teamNumber) {
+    teamInfo['teamNumber'] = params.teamNumber
+  }
 
   return teamInfo
 }
