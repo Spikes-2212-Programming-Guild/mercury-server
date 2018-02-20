@@ -6,7 +6,7 @@ let teamsCollection
 
 function getTeam (number) {
   return new Promise((resolve, reject) => {
-    teamsCollection.findOne({number: number})
+    teamsCollection.findOne({number: number}).project({_id: 0})
       .then(team => {
         if (!team) {
           const err = Error(`Team ${number} dosen't exist`)
