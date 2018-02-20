@@ -25,8 +25,7 @@ function insertTeam (team) {
 }
 
 function updateTeam (number, updateQuery) {
-  teamsCollection.updateOne({number: number}, updateQuery)
-    .catch(err => console.error(err))
+  return teamsCollection.updateOne({number: number}, updateQuery)
 }
 
 function removeTeam (number) {
@@ -40,7 +39,8 @@ function insertMatch (match, teamNumber) {
     const expression = {}
     expression[`matches.${match.matchnumber}`] = newMatch
     updateTeam(teamNumber, {$set: expression})
-    resolve()
+      .then(() => resolve)
+      .catch(err => reject(err))
   })
 }
 
