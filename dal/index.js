@@ -6,7 +6,7 @@ let teamsCollection
 
 function getTeam (number) {
   return new Promise((resolve, reject) => {
-    teamsCollection.findOne({number: number}).project({_id: 0})
+    teamsCollection.findOne({number: number}, {_id: 0})
       .then(team => {
         if (!team) {
           const err = Error(`Team ${number} dosen't exist`)
@@ -21,7 +21,7 @@ function getTeam (number) {
 }
 
 function insertTeam (team) {
-  teamsCollection.insertOne(team)
+  return teamsCollection.insertOne(team)
 }
 
 function updateTeam (number, updateQuery) {
@@ -59,8 +59,11 @@ function matchExists (matchNumber, teamNumber) {
 function teamExists (number) {
   return new Promise((resolve, reject) => {
     getTeam(number)
-      .then(() => resolve(true))
-      .catch(() => resolve(false))
+      .then((item) => resolve(!!item))
+      .catch((err) => {
+        if (err.name === 'no-team-found') resolve(false)
+        else reject(err)
+      })
   })
 }
 
