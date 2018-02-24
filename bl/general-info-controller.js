@@ -5,7 +5,7 @@ const gameConfigManager = require('../dal/game-config-manager')
 
 function getInfoForAllTeams () {
   return new Promise((resolve, reject) => {
-    dbController.getAllTeams()
+    dbController.team.getAllTeams()
       .then(teams => {
         console.log(teams)
         const parsed = (teams).map((team) => teamInfoProcessor(team.matches, gameConfigManager.get(), {teamNumber: team.number}))

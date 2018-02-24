@@ -3,7 +3,7 @@ const dbController = require('../dal')
 function insertMatch (match) {
   return new Promise((resolve, reject) => {
     function saveMatch (teamNumber) {
-      dbController.matchExists(match.matchnumber, teamNumber)
+      dbController.match.matchExists(match.matchnumber, teamNumber)
         .then(matchExists => {
           if (!matchExists) {
             delete match.teamnumber;
@@ -17,7 +17,7 @@ function insertMatch (match) {
         .catch(err => reject(err))
     }
     const teamNumber = match.teamnumber
-    dbController.teamExists(teamNumber)
+    dbController.team.teamExists(teamNumber)
       .then(exists => {
         if (!exists) {
           dbController.insertTeam({number: teamNumber, matches: {}})

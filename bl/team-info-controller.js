@@ -4,11 +4,11 @@ const gameConfigManager = require('../dal/game-config-manager')
 
 function getTeamInfo (number) {
   return new Promise((resolve, reject) => {
-    dbController.teamExists(number)
+    dbController.team.teamExists(number)
       .then(exists => {
         if (!exists) reject(Error(`Team ${number} Dosen't exist`))
         else {
-          dbController.getTeam(number)
+          dbController.team.getTeam(number)
             .then(team => {
               resolve(teamInfoProcessor(team.matches, gameConfigManager.get(), {matchNumber: true}))
             })
