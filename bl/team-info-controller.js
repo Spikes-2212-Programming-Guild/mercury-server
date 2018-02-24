@@ -1,5 +1,5 @@
 const dbController = require('../dal')
-const teamInfoProcessor = require('./data-processing/team-info-processor')
+const teamInfoProcessor = require('../routes/formating/team-info-formatter')
 const gameConfigManager = require('../dal/game-config-manager')
 
 function getTeamInfo (number) {
