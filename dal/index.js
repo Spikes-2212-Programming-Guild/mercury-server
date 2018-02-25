@@ -1,6 +1,8 @@
 const mongodb = require('mongodb')
 const MongoClient = mongodb.MongoClient
 
+const configManager = require('./game-config-manager')
+
 const config = require('../config').mongo
 let teamsCollection
 
@@ -22,3 +24,4 @@ MongoClient.connect(config.url)
 
 const teamUtils = require('./team')
 const matchUtils = require('./match')
+exports.config = configManager
