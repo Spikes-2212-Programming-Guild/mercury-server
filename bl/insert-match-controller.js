@@ -7,7 +7,7 @@ function insertMatch (match) {
         .then(matchExists => {
           if (!matchExists) {
             delete match.teamnumber;
-            dbController.insertMatch(match, teamNumber)
+            dbController.match.insertMatch(match, teamNumber)
               .then(() => resolve())
               .catch(err => reject(err))
           } else {
@@ -20,7 +20,7 @@ function insertMatch (match) {
     dbController.team.teamExists(teamNumber)
       .then(exists => {
         if (!exists) {
-          dbController.insertTeam({number: teamNumber, matches: {}})
+          dbController.team.insertTeam({number: teamNumber, matches: {}})
             .then(() => saveMatch())
         } else {
           saveMatch(teamNumber)
