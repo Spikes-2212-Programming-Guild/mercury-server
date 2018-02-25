@@ -6,7 +6,7 @@ const config = require('./config.json')
 const teamRouter = require('./routes/team')
 const gameConfigRouter = require('./routes/game-config')
 
-const gameConfigManager = require('./dal/game-config-manager')
+const gameConfigManager = require('./dal').config
 gameConfigManager.load(config.gameName)
 
 const app = express()

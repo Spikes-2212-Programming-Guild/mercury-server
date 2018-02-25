@@ -1,7 +1,7 @@
 const dbController = require('../dal')
 const teamInfoProcessor = require('../routes/formating/team-info-formatter')
 const generalInfoProcessor = require('./data-processing/general-info-processor')
-const gameConfigManager = require('../dal/game-config-manager')
+const gameConfigManager = require('../dal/').config
 
 function getInfoForAllTeams () {
   return new Promise((resolve, reject) => {
