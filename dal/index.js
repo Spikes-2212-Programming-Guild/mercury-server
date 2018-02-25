@@ -10,15 +10,15 @@ MongoClient.connect(config.url)
       if (err) throw err
       else {
         teamsCollection = coll
-        const teamUtils = require('./team')(teamsCollection)
-        const matchUtils = require('./match')(teamsCollection, teamUtils.updateTeam)
-        module.exports = {
-          team: teamUtils,
-          match: matchUtils
-        }
+        const teamUtilsInstance = teamUtils(teamsCollection)
+        exports.team = teamUtilsInstance
+        exports.match = matchUtils(teamsCollection, teamUtilsInstance.updateTeam)
       }
     })
   })
   .catch(err => {
     console.error(err)
   })
+
+const teamUtils = require('./team')
+const matchUtils = require('./match')
