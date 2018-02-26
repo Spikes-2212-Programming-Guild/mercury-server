@@ -7,7 +7,7 @@ function insertMatch (match, teamNumber) {
     const expression = {}
     expression[`matches.${match.matchnumber}`] = newMatch
     updateTeam(teamNumber, {$set: expression})
-      .then(() => resolve)
+      .then(() => resolve())
       .catch(err => reject(err))
   })
 }
