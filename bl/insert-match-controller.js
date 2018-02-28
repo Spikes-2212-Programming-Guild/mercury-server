@@ -5,7 +5,7 @@ function insertMatch (match, force = false) {
     function saveMatch (teamNumber) {
       dbController.match.matchExists(teamNumber, match.matchnumber)
         .then(matchExists => {
-          if (!matchExists) {
+          if (!matchExists || force) {
             console.log('Saving Match')
             delete match.teamnumber
             dbController.match.insertMatch(match, teamNumber)
