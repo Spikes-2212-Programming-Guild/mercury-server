@@ -1,12 +1,13 @@
 const dbController = require('../dal')
 
-function insertMatch (match) {
+function insertMatch (match, force = false) {
   return new Promise((resolve, reject) => {
     function saveMatch (teamNumber) {
-      dbController.match.matchExists(match.matchnumber, teamNumber)
+      dbController.match.matchExists(teamNumber, match.matchnumber)
         .then(matchExists => {
           if (!matchExists) {
-            delete match.teamnumber;
+            console.log('Saving Match')
+            delete match.teamnumber
             dbController.match.insertMatch(match, teamNumber)
               .then(() => resolve())
               .catch(err => reject(err))
