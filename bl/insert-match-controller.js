@@ -22,7 +22,7 @@ function insertMatch (match, force = false) {
       .then(exists => {
         if (!exists) {
           dbController.team.insertTeam({number: teamNumber, matches: {}})
-            .then(() => saveMatch())
+            .then(() => saveMatch(teamNumber))
         } else {
           saveMatch(teamNumber)
         }
