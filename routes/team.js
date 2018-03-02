@@ -4,7 +4,7 @@ const teamInfoController = require('../bl/team-info-controller')
 const generalInfoController = require('../bl/general-info-controller')
 
 router.post('/submit-match', function (req, res) {
-  insertMatchController.insertMatch(req.body.match)
+  insertMatchController.insertMatch(req.body.match, req.body.force)
     .then(() => {
       res.end()
     })
