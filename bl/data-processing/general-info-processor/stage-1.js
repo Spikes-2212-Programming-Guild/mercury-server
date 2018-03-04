@@ -57,11 +57,13 @@ module.exports = function parseStage1 (info) {
     const teamResult = {}
     Object.keys(teamInfo).forEach(questionName => {
       const question = teamInfo[questionName]
-      if (question.type === 'boolean') {
-        question.options = ['Yes', 'No']
-        teamResult[questionName] = parsers['enum'](question)
-      } else {
-        teamResult[questionName] = parsers[question.type](question)
+      if (question.type !== 'string') {
+        if (question.type === 'boolean') {
+          question.options = ['Yes', 'No']
+          teamResult[questionName] = parsers['enum'](question)
+        } else {
+          teamResult[questionName] = parsers[question.type](question)
+        }
       }
     })
     infoByQuestion[teamNumber] = teamResult
