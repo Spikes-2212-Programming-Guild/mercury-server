@@ -1,9 +1,9 @@
 {
   "port": "8088",
-  "gameName": "game.json",
+  "gameName": "district3.json",
   "mongo": {
-    "url" : "mongodb://localhost:27017",
+    "url" : "mongodb://172.31.41.242:27017",
     "dbName": "mercury",
-    "collectionName": "teams"
+    "collectionName": "district3"
   }
 }
