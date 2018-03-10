@@ -27,12 +27,19 @@ module.exports = function (matches, gameConfig, params) {
         data: extractQuestionData(question, data, configKey),
         type: question.type
       }
-      console.log(question.params)
       if (question.params) {
         if (question.params.options) teamInfo[name].options = question.params.options
       }
     })
   })
+  const names = []
+  data.forEach(function (match) {
+    names.push(match['scoutername'])
+  })
+  teamInfo['Scouter Names'] = {
+    data: names,
+    type: 'String'
+  }
   if (params.matchNumber) {
     teamInfo['matchnumber'] = Object.keys(matches)
   }
