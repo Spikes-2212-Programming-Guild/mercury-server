@@ -22,15 +22,24 @@ module.exports = function (matches, gameConfig, params) {
   const teamInfo = {}
   Object.keys(gameConfig).forEach(configKey => {
     gameConfig[configKey].forEach(question => {
-      teamInfo[question.name] = {
+      const name = (question.name + ' - ' + configKey)
+      teamInfo[name] = {
         data: extractQuestionData(question, data, configKey),
         type: question.type
       }
       if (question.params) {
-        if (question.params.options) teamInfo[question.name].options = question.params.options
+        if (question.params.options) teamInfo[name].options = question.params.options
       }
     })
   })
+  const names = []
+  data.forEach(function (match) {
+    names.push(match['scoutername'])
+  })
+  teamInfo['Scouter Names'] = {
+    data: names,
+    type: 'String'
+  }
   if (params.matchNumber) {
     teamInfo['matchnumber'] = Object.keys(matches)
   }

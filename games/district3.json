@@ -1,0 +1,190 @@
+{
+  "auto": [
+    {
+      "name": "Starting Placement",
+      "type": "enum",
+      "params": {
+        "options": [
+          "Left",
+          "Middle",
+          "Right"
+        ]
+      }
+    },
+    {
+      "name": "Passed Auto Line?",
+      "type": "boolean"
+    },
+    {
+      "name": "Cubes Placed To Switch",
+      "type": "number",
+      "params": {
+        "min": 0
+      }
+    },
+    {
+      "name": "Cubes Missed To Switch",
+      "type": "number",
+      "params": {
+        "min": 0
+      }
+    },
+    {
+      "name": "Cubes Placed To Scale",
+      "type": "number",
+      "params": {
+        "min": 0
+      }
+    },
+    {
+      "name": "Cubes Missed To Scale",
+      "type": "number",
+      "params": {
+        "min": 0
+      }
+    },
+    {
+      "name": "Cubes Placed To Exchange",
+      "type": "number",
+      "params": {
+        "min": 0
+      }
+    },
+    {
+      "name": "Cubes Missed To Exchange",
+      "type": "number",
+      "params": {
+        "min": 0
+      }
+    },
+    {
+      "name": "Cubes Collected From The Floor",
+      "type": "number",
+      "params": {
+        "min": 0
+      }
+    }
+  ],
+  "teleop": [
+    {
+      "name": "Cubes Collected From The Floor",
+      "type": "number",
+      "params": {
+        "min": 0
+      }
+    },
+    {
+      "name": "Cubes Placed To Switch",
+      "type": "number",
+      "params": {
+        "min": 0
+      }
+    },
+    {
+      "name": "Cubes Placed To Scale",
+      "type": "number",
+      "params": {
+        "min": 0
+      }
+    },
+    {
+      "name": "Cubes Placed To Exchange",
+      "type": "number",
+      "params": {
+        "min": 0
+      }
+    },
+    {
+      "name": "Cubes Missed To Switch",
+      "type": "number",
+      "params": {
+        "min": 0
+      }
+    },
+    {
+      "name": "Cubes Missed To Scale",
+      "type": "number",
+      "params": {
+        "min": 0
+      }
+    },
+    {
+      "name": "Cubes Missed To Exchange",
+      "type": "number",
+      "params": {
+        "min": 0
+      }
+    },
+    {
+      "name": "Cubes Collected From Portal/Exchange",
+      "type": "number",
+      "params": {
+        "min": 0
+      }
+    },
+    {
+      "name": "Climbed?",
+      "type": "enum",
+      "params": {
+        "options": [
+          "No",
+          "Parked On The Ramp",
+          "Tried And Failed",
+          "Tried And Succeeded"
+        ]
+      }
+    },
+    {
+      "name": "Robots Elevated",
+      "type": "number",
+      "params": {
+        "min": 0,
+        "max": 2
+      }
+    },
+    {
+      "name": "Robots Hanged On This Robot",
+      "type": "number",
+      "params": {
+        "min": 0,
+        "max": 2
+      }
+    },
+    {
+      "name": "Comment On This Robot's Climbing",
+      "type": "string"
+    },
+    {
+      "name": "Robot Played Defensive?",
+      "type": "boolean"
+    },
+    {
+      "name": "Rank Robot's Defense Effectively",
+      "type": "number",
+      "params": {
+        "min": "1",
+        "max": "5"
+      }
+    },
+    {
+      "name": "Rank The Driving Crew",
+      "type": "number",
+      "params": {
+        "min": "1",
+        "max": "5"
+      }
+    },
+    {
+      "name": "Switched To Disable?",
+      "type": "boolean"
+    },
+    {
+      "name": "Robot Broke?",
+      "type": "boolean"
+    },
+    {
+      "name": "General Comments",
+      "type": "string"
+    }
+  ]
+}
